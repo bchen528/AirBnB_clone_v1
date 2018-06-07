@@ -10,10 +10,9 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """initialize attributes
         Args:
-            id (str): uuid
-            created_at (datetime): current datetime when instance is created
-            updated_at (datetime): created time but updated every time you\
-                change your object
+            args (int): arguments to send a non-keyworded variable
+                length argument list to the function
+            kwargs (dict): keyworded variable length of arguments
         """
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
