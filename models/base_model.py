@@ -3,7 +3,7 @@
 from datetime import datetime
 import uuid
 import json
-
+from models import storage
 
 class BaseModel:
     """class BaseModel"""
@@ -14,10 +14,6 @@ class BaseModel:
                 length argument list to the function
             kwargs (dict): keyworded variable length of arguments
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-
         if kwargs is not None and len(kwargs) != 0:
             for key in kwargs:
                 if key == "id":
@@ -28,6 +24,18 @@ class BaseModel:
                 elif key == "updated_at":
                     self.updated_at = datetime.strptime(kwargs[key],
                                                         "%Y-%m-%dT%H:%M:%S.%f")
+                else:
+                    if key != "__class__":
+                        setattr(self, key, kwargs[key])
+                """
+                else:
+                    storage.new(kwargs[key])
+                """
+        else:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+
 
     def __str__(self):
         """creates formatted string
@@ -43,6 +51,7 @@ class BaseModel:
             updated datetime
         """
         self.updated_at = datetime.now()
+        storage.save()
         return self.updated_at
 
     def to_dict(self):
