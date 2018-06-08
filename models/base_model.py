@@ -28,16 +28,17 @@ class BaseModel:
             self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            """models.storage.new(self)"""
+            models.storage.new(self)
 
     def save(self):
         """Saves the updated_at time"""
         self.updated_at = datetime.now()
-        """models.storage.save()"""
+        models.storage.save()
 
     def to_dict(self):
         """Returns each object to a dictionary"""
-        new_dict = self.__dict__
+        new_dict = {}
+        new_dict.update(self.__dict__)
         new_dict['__class__'] = type(self).__name__
         for key, value in self.__dict__.items():
             if key == "created_at":
