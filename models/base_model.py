@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from uuid import uuid4
 from datetime import datetime
-
+import models
 """Base Module for all Objects"""
 
 
@@ -28,10 +28,12 @@ class BaseModel:
             self.id = uuid4().urn[9:]
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            models.storage.new(self)
 
     def save(self):
         """Saves the updated_at time"""
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """Returns each object to a dictionary"""
