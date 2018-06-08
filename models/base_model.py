@@ -14,34 +14,39 @@ class BaseModel:
             args (list): list of arguments
             kwargs (dict): dictionary of arguments
         """
-        if kwargs:
+        if kwargs and len(kwargs) != 0:
+            a_keys = ['name', 'id', 'my_number']
+            self.__dict__.update((k, v) for k, v in kwargs.items() if k in a_keys)
             for key, value in kwargs.items():
-                if key == 'id':
-                    self.id = value
-                elif key == 'created_at':
+                if key == 'created_at':
                     self.created_at = datetime.strptime(value,
                                                         '%Y-%m-%dT%H:%M:%S.%f')
                 elif key == 'updated_at':
                     self.updated_at = datetime.strptime(value,
                                                         '%Y-%m-%dT%H:%M:%S.%f')
         else:
-            self.id = uuid4().urn[9:]
+            self.id = str(uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            models.storage.new(self)
+            """models.storage.new(self)"""
 
     def save(self):
         """Saves the updated_at time"""
         self.updated_at = datetime.now()
-        models.storage.save()
+        """models.storage.save()"""
 
     def to_dict(self):
         """Returns each object to a dictionary"""
-        new_key = self.__dict__
-        new_key['__class__'] = type(self).__name__
-        new_key['created_at'] = new_key['created_at'].isoformat()
-        new_key['updated_at'] = new_key['updated_at'].isoformat()
-        return new_key
+        new_dict = self.__dict__
+        new_dict['__class__'] = type(self).__name__
+        for key, value in self.__dict__.items():
+            if key == "created_at":
+                new_dict[key] = value.isoformat()
+            elif key == "updated_at":
+                new_dict[key] = value.isoformat()
+            else:
+                new_dict[key] = value
+        return new_dict
 
     def __str__(self):
         """Prints out a string representation of an object"""
