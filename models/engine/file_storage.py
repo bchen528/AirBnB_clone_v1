@@ -4,12 +4,12 @@ from os import path
 from models.base_model import BaseModel
 """ """
 
+
 class FileStorage:
     """ """
     __file_path = "file.json"
     __objects = {}
-    
-       
+
     def all(self):
         """ """
         return self.__objects
@@ -27,7 +27,7 @@ class FileStorage:
             for key, value in self.__objects.items():
                 new_dict[key] = value.to_dict()
             f.write(json.dumps(new_dict))
-        
+
     def reload(self):
         """ """
         if path.exists(self.__file_path):
