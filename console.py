@@ -4,6 +4,7 @@ import cmd
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 import json 
+from os import path
 
 class HBNBCommand(cmd.Cmd):
     """Simple command processor for python"""
@@ -34,7 +35,7 @@ class HBNBCommand(cmd.Cmd):
             elif len(args) != 2:
                 print("** instance id missing **")
             else:
-                #search for id    
+                #search for id 
                 try:
                     with open("file.json", mode='r', encoding='utf-8') as f:
                         flag = 1
@@ -59,6 +60,35 @@ class HBNBCommand(cmd.Cmd):
                 pass
         else:
             print("** class doesn't exist **")
+
+    def do_destroy(self, line):
+        """Deletes an instance based on teh class name and id"""
+        if line:
+            args = line.split()
+            if args[0] not in self.all_classes:
+                print("**  class doesn't exist  **")
+            elif len(args) != 2:
+                print("**  instance id missing  **")
+            else:
+                f1 = open("file.json", mode='r', encoding='utf-8')
+                n_dict = json.load(f1)
+                for k in n_dict.copy():
+                    if args[1] == k.split('.')[1]:
+                        del n_dict[k]
+                f1.close()
+                f2 = open("file.json", mode='w', encoding='utf-8')
+                f2.write(json.dumps(n_dict))
+                f2.close()
+                """
+                n_dict = json.load(f)
+                for k in  n_dict.copy():
+                    if args[1] == k.split('.')[1]:
+                        print("found it")
+                        del n_dict[k]
+                 """
+        else:
+            print("**  class name missing  **")         
+
     def do_quit(self, line):
         """Quit command to exit the program"""
         return True
