@@ -3,7 +3,8 @@
 from datetime import datetime
 import uuid
 import json
-from models import storage
+import models
+
 
 class BaseModel:
     """class BaseModel"""
@@ -27,15 +28,11 @@ class BaseModel:
                 else:
                     if key != "__class__":
                         setattr(self, key, kwargs[key])
-                """
-                else:
-                    storage.new(kwargs[key])
-                """
         else:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-
+            models.storage.new(self)
 
     def __str__(self):
         """creates formatted string
@@ -46,13 +43,9 @@ class BaseModel:
                                      self.__dict__)
 
     def save(self):
-        """updates public instance attribute updated_at with current datetime
-        Returns:
-            updated datetime
-        """
+        """updates public instance attribute updated_at with current datetime"""
         self.updated_at = datetime.now()
-        storage.save()
-        return self.updated_at
+        models.storage.save()
 
     def to_dict(self):
         """creates a dictionary containing all keys/values of
