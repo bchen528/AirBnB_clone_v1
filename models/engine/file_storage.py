@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 """This is a class FileStorage"""
 import json
+from models.base_model import BaseModel
 
 
 class FileStorage:
-    __file_path = ""
+    """class FileStorage"""
+    __file_path = "file.json"
     __objects = {}
 
     def all(self):
@@ -19,18 +21,24 @@ class FileStorage:
         Args:
             obj (obj): object
         """
-        FileStorage.__object[type(obj).__name__ + ".id"] = obj
+        FileStorage.__objects[type(obj).__name__ + "." + obj.id] = obj
 
     def save(self):
         """serializes __objects to the JSON file (path: __file_path)"""
-        file_to_open = FileStorage.__file_path + "file.json"
-        with open(file_to_open, mode="w", encoding="utf-8") as a_file:
-            json.dump(FileStorage.__objects, a_file)
+        a_dict = {}
+        for key in FileStorage.__objects:
+            a_dict[key] = FileStorage.__objects[key].to_dict()
+        with open(FileStorage.__file_path, mode="w",
+                  encoding="utf-8") as a_file:
+            json.dump(a_dict, a_file)
 
     def reload(self):
         """deserializes the JSON file to __objects"""
-        file_to_open = FileStorage.__file_path + "file.json"
-        a_dict = {}
-        with open(file_to_open, "r") as a_file:
-            a_dict = json.load(a_file)
-        print(a_dict)
+        try:
+            with open(FileStorage.__file_path, mode="r",
+                      encoding="utf-8") as a_file:
+                temp = json.load(a_file)
+            for key in temp:
+                eval(BaseModel(key))
+        except:
+            pass
