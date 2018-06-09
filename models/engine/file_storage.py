@@ -30,8 +30,13 @@ class FileStorage:
 
     def reload(self):
         """ """
-        if path.exists(self.__file_path):
-            with open(self.__file_path, mode='r', encoding='utf-8') as f:
-                for key, value in json.load(f).items():
-                    value = BaseModel(**value)
-                    self.__objects[key] = value
+        try:
+            if path.exists(self.__file_path) and path.getsize("file.json") > 0:
+                with open(self.__file_path, mode='r', encoding='utf-8') as f:
+                    new_dict = json.load(f)
+                    if new_dict:
+                        for key, value in new_dict.items():
+                            value = BaseModel(**value)
+                            self.__objects[key] = value
+        except Exception:
+            pass

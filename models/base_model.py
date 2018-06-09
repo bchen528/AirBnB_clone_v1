@@ -53,3 +53,7 @@ class BaseModel:
         """Prints out a string representation of an object"""
         return "[{}] ({}) {}".format(type(self).__name__,
                                      self.id, self.__dict__)
+    
+    def __repr__(self):
+        """ """
+        return self.__str__()
