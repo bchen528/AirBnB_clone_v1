@@ -55,5 +55,5 @@ class BaseModel:
                                      self.id, self.__dict__)
     
     def __repr__(self):
-        """ """
+        """Returns the code representation"""
         return self.__str__()
