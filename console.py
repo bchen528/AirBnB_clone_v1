@@ -8,10 +8,12 @@ from os import path
 from models import storage
 from shlex import split
 
+
 class HBNBCommand(cmd.Cmd):
     """Simple command processor for python"""
     prompt = '(hbtn) '
-    all_classes = ["BaseModel", "FileStorage"]    
+    all_classes = ["BaseModel", "FileStorage", "User", "State",
+                   "City", "Amenity", "Place", "Review"]    
     
     def do_create(self, line):
         """Creates a new BaseModel, saves it to storage
