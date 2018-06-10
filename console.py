@@ -3,18 +3,24 @@
 import cmd
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
-import json 
+import json
 from os import path
 from models import storage
 from shlex import split
+from models.review import Review
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
     """Simple command processor for python"""
     prompt = '(hbtn) '
-    all_classes = ["BaseModel", "FileStorage", "User", "State",
-                   "City", "Amenity", "Place", "Review"]    
-    
+    all_classes = ["BaseModel", "User", "State",
+                   "City", "Amenity", "Place", "Review"]
+
     def do_create(self, line):
         """Creates a new BaseModel, saves it to storage
         Args:
@@ -24,8 +30,8 @@ class HBNBCommand(cmd.Cmd):
             if line not in self.all_classes:
                 print("** class doesn't exist **")
             else:
-                new = BaseModel()
-                storage.save() 
+                new = eval(line)()
+                storage.save()
                 print(new.id)
         else:
             print("** class name missing **")
@@ -42,7 +48,6 @@ class HBNBCommand(cmd.Cmd):
             elif len(args) < 2:
                 print("** instance id missing **")
             else:
-                #search for id 
                 try:
                     base = args[0] + '.' + args[1]
                     for k, v in storage.all().items():
@@ -54,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
         else:
             print("** class name missing **")
-    
+
     def get_attribute(self, line):
         """Gets the attribute name and value
         Args:
@@ -67,7 +72,7 @@ class HBNBCommand(cmd.Cmd):
             elif len(args) < 4:
                 print("** value missing **")
             return args[2], args[3]
-             
+
     def do_update(self, line):
         """Updates your base models
         Args:
@@ -75,14 +80,14 @@ class HBNBCommand(cmd.Cmd):
         """
         try:
             model_value, model_id = self.get_instance(line)
-            attr, attr_value = self.get_attribute(line) 
+            attr, attr_value = self.get_attribute(line)
             setattr(model_value, attr, attr_value)
             storage.save()
         except Exception:
             pass
 
     def do_show(self, line):
-        """Prints the string representations of an instance based 
+        """Prints the string representations of an instance based
         on the class name and id
         ex: $show BaseModel 1234-1234-1234" # shows the entire dict
         Args:
@@ -124,14 +129,15 @@ class HBNBCommand(cmd.Cmd):
                 flag = 1
                 n_dict = storage.all()
                 for k in n_dict.copy():
-                    if args[1] == k.split('.')[1]:
+                    if args[1] == k.split('.')[1] and\
+                       args[0] == k.split('.')[0]:
                         del n_dict[k]
                         flag = 0
                 if flag:
                     print("** no instance found **")
-                storage.save() 
+                storage.save()
         else:
-            print("** class name missing **")         
+            print("** class name missing **")
 
     def do_quit(self, line):
         """Quit command to exit the program

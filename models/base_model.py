@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
+"""Base Module for all Objects"""
 from uuid import uuid4
 from datetime import datetime
 import models
-"""Base Module for all Objects"""
 
 
 class BaseModel:
@@ -15,8 +15,8 @@ class BaseModel:
             kwargs (dict): dictionary of arguments
         """
         if kwargs and len(kwargs) != 0:
-            a_keys = ['name', 'id', 'my_number']
-            self.__dict__.update((k, v) for k, v in kwargs.items() if k in a_keys)
+            ks = ['name', 'id', 'my_number']
+            self.__dict__.update((k, v) for k, v in kwargs.items() if k in ks)
             for key, value in kwargs.items():
                 if key == 'created_at':
                     self.created_at = datetime.strptime(value,
@@ -53,7 +53,7 @@ class BaseModel:
         """Prints out a string representation of an object"""
         return "[{}] ({}) {}".format(type(self).__name__,
                                      self.id, self.__dict__)
-    
+
     def __repr__(self):
         """Returns the code representation"""
         return self.__str__()
