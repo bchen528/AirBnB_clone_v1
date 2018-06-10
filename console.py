@@ -37,6 +37,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 2:
             print(cls_id)
         """
+
         if len(args) == 0 or args[0] == "":
             print("** class name missing **")
         elif args[0] != "BaseModel":
@@ -51,19 +52,12 @@ class HBNBCommand(cmd.Cmd):
             if flag == 0:
                 print("** no instance found **")
 
-    """
     def do_all(self, line):
         if line != "BaseModel":
             print("** class doesn't exist **")
         else:
-            print(line.__str__())
-    """
-
-    """
-    def parseline(self, line):
-        parse commandline
-        return cmd.Cmd.parseline(self, line)
-    """
+            for key, value in (storage.all()).items():
+                print([value])
 
     def emptyline(self):
         pass
@@ -76,15 +70,6 @@ class HBNBCommand(cmd.Cmd):
     def do_EOF(self, line):
         """Exit"""
         return True
-
-    """
-    def parse(argv):
-        args = []
-        for i in range(len(argv)):
-            if 
-            args.append = argv[1]
-        return args
-    """
 
 if __name__ == '__main__':
     display = HBNBCommand()
