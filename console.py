@@ -71,7 +71,24 @@ class HBNBCommand(cmd.Cmd):
                 print("** attribute name missing **")
             elif len(args) < 4:
                 print("** value missing **")
-            return args[2], args[3]
+            if type(int(args[3])) == type(eval(args[3])):
+                return args[2], int(args[3])
+            elif type(float(args[3])) == type(eval(args[3])):
+                return args[2], float(args[3])
+            else:
+                return args[2], args[3]
+
+    def check_attr_value_type(self, attr, attr_value):
+        """ """
+        int_changes = ["number_rooms", "number_bathrooms",
+                       "max_guest", "price_by_night"]
+        float_changes = ["latitude", "longitude"]
+        if attr in int_changes:
+            return attr, int(attr_value)
+        elif attr in float_changes:
+            return attr, float(attr_value)
+        else:
+            return attr, attr_value
 
     def do_update(self, line):
         """Updates your base models
@@ -81,10 +98,11 @@ class HBNBCommand(cmd.Cmd):
         try:
             model_value, model_id = self.get_instance(line)
             attr, attr_value = self.get_attribute(line)
-            setattr(model_value, attr, attr_value)
+            c_attr, c_attr_value = self.check_attr_value_type(attr, attr_value)
+            setattr(model_value, c_attr, c_attr_value)
             storage.save()
-        except Exception:
-            pass
+        except Exception as e:
+            print(e)
 
     def do_show(self, line):
         """Prints the string representations of an instance based
