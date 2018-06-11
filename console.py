@@ -15,31 +15,30 @@ from models.review import Review
 
 class HBNBCommand(cmd.Cmd):
     """class HBNBCommand"""
+    classes = {"BaseModel", "User", "Place", "City", "State",
+               "Amenity", "Review"}
+
     def do_create(self, cls):
         """create a new instance of BaseModel
         """
-        classes = {"BaseModel", "User", "Place", "City", "State",
-                   "Amenity", "Review"}
         if cls == "":
             print("** class name missing **")
-        elif cls not in classes:
+        elif cls not in self.classes:
             print("** class doesn't exist **")
         else:
             new = eval(cls)()
-            storage.save()
+            new.save()
             print(new.id)
 
     def do_show(self, argv):
         """prints string representation of an instance based on class name, id
         """
-        classes = {"BaseModel", "User", "Place", "City", "State",
-                   "Amenity", "Review"}
         args = "".join(argv)
         args = [i.strip() for i in args.split(' ')]
 
         if len(args) == 0 or args[0] == "":
             print("** class name missing **")
-        elif args[0] not in classes:
+        elif args[0] not in self.classes:
             print("** class doesn't exist **")
         elif len(args) == 1 or args[1] == "":
             print("** instance id missing **")
@@ -55,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
         """Prints all string representation of all instances based or not
         on the class name
         """
-        if line == "" or line == "BaseModel":
+        if line == "" or line in self.classes:
             for key, value in (storage.all()).items():
                 print([value])
         else:
@@ -63,14 +62,12 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, argv):
         """deletes an instance based on the class name and id"""
-        classes = {"BaseModel", "User", "Place", "City", "State",
-                   "Amenity", "Review"}
         args = "".join(argv)
         args = [i.strip() for i in args.split(' ')]
 
         if len(args) == 0 or args[0] == "":
             print("** class name missing **")
-        elif args[0] not in classes:
+        elif args[0] not in self.classes:
             print("** class doesn't exist **")
         elif len(args) == 1 or args[1] == "":
             print("** instance id missing **")
@@ -87,14 +84,12 @@ class HBNBCommand(cmd.Cmd):
         """updates an instance based on the class name and id by
         adding or updating attribute
         """
-        classes = {"BaseModel", "User", "Place", "City", "State",
-                   "Amenity", "Review"}
         args = "".join(argv)
         args = [i.strip() for i in args.split(' ')]
 
         if len(args) == 0 or args[0] == "":
             print("** class name missing **")
-        elif args[0] not in classes:
+        elif args[0] not in self.classes:
             print("** class doesn't exist **")
         elif len(args) == 1 or args[1] == "":
             print("** instance id missing **")
