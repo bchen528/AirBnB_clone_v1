@@ -5,6 +5,7 @@ from sys import argv
 from models.base_model import BaseModel
 from models import storage
 import json
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -12,24 +13,26 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, cls):
         """create a new instance of BaseModel
         """
+        classes = {"BaseModel", "User"}
         if cls == "":
             print("** class name missing **")
-        elif cls != "BaseModel":
+        elif cls not in classes:
             print("** class doesn't exist **")
         else:
-            new = BaseModel()
+            new = eval(cls)()
             storage.save()
             print(new.id)
 
     def do_show(self, argv):
         """prints string representation of an instance based on class name, id
         """
+        classes = {"BaseModel", "User"}
         args = "".join(argv)
         args = [i.strip() for i in args.split(' ')]
 
         if len(args) == 0 or args[0] == "":
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] not in classes:
             print("** class doesn't exist **")
         elif len(args) == 1 or args[1] == "":
             print("** instance id missing **")
@@ -53,12 +56,13 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, argv):
         """deletes an instance based on the class name and id"""
+        classes = {"BaseModel", "User"}
         args = "".join(argv)
         args = [i.strip() for i in args.split(' ')]
 
         if len(args) == 0 or args[0] == "":
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] not in classes:
             print("** class doesn't exist **")
         elif len(args) == 1 or args[1] == "":
             print("** instance id missing **")
@@ -75,12 +79,13 @@ class HBNBCommand(cmd.Cmd):
         """updates an instance based on the class name and id by
         adding or updating attribute
         """
+        classes = {"BaseModel", "User"}
         args = "".join(argv)
         args = [i.strip() for i in args.split(' ')]
 
         if len(args) == 0 or args[0] == "":
             print("** class name missing **")
-        elif args[0] != "BaseModel":
+        elif args[0] not in classes:
             print("** class doesn't exist **")
         elif len(args) == 1 or args[1] == "":
             print("** instance id missing **")
