@@ -2,6 +2,12 @@
 """This is a class FileStorage"""
 import json
 from models.base_model import BaseModel
+from models.user import User
+from models.place import Place
+from models.city import City
+from models.state import State
+from models.review import Review
+from models.amenity import Amenity
 
 
 class FileStorage:
@@ -40,5 +46,5 @@ class FileStorage:
                 a_dict = json.load(a_file)
             for key, value in a_dict.items():
                 FileStorage.__objects[key] = eval(value['__class__'])(**value)
-        except:
+        except FileNotFoundError:
             pass
