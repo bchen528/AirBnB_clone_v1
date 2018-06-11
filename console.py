@@ -1,11 +1,16 @@
 #!/usr/bin/python3
 """This is a class HBNBCommand"""
 import cmd
-from sys import argv
-from models.base_model import BaseModel
-from models import storage
 import json
+from sys import argv
+from models import storage
+from models.base_model import BaseModel
 from models.user import User
+from models.place import Place
+from models.city import City
+from models.state import State
+from models.amenity import Amenity
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -13,7 +18,8 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, cls):
         """create a new instance of BaseModel
         """
-        classes = {"BaseModel", "User"}
+        classes = {"BaseModel", "User", "Place", "City", "State",
+                   "Amenity", "Review"}
         if cls == "":
             print("** class name missing **")
         elif cls not in classes:
