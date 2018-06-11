@@ -37,8 +37,8 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, mode="r",
                       encoding="utf-8") as a_file:
-                temp = json.load(a_file)
-            for key in temp:
-                eval(BaseModel(key))
+                a_dict = json.load(a_file)
+            for key, value in a_dict.items():
+                FileStorage.__objects[key] = eval(value['__class__'])(**value)
         except:
             pass
