@@ -26,7 +26,8 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, argv):
         """prints string representation of an instance based on class name, id
         """
-        classes = {"BaseModel", "User"}
+        classes = {"BaseModel", "User", "Place", "City", "State",
+                   "Amenity", "Review"}
         args = "".join(argv)
         args = [i.strip() for i in args.split(' ')]
 
@@ -56,7 +57,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, argv):
         """deletes an instance based on the class name and id"""
-        classes = {"BaseModel", "User"}
+        classes = {"BaseModel", "User", "Place", "City", "State",
+                   "Amenity", "Review"}
         args = "".join(argv)
         args = [i.strip() for i in args.split(' ')]
 
@@ -79,7 +81,8 @@ class HBNBCommand(cmd.Cmd):
         """updates an instance based on the class name and id by
         adding or updating attribute
         """
-        classes = {"BaseModel", "User"}
+        classes = {"BaseModel", "User", "Place", "City", "State",
+                   "Amenity", "Review"}
         args = "".join(argv)
         args = [i.strip() for i in args.split(' ')]
 
