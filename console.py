@@ -21,7 +21,7 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, cls):
         """create a new instance of BaseModel
         """
-        if cls == "":
+        if len(cls) == 0 or cls == "":
             print("** class name missing **")
         elif cls not in self.classes:
             print("** class doesn't exist **")
@@ -109,37 +109,10 @@ class HBNBCommand(cmd.Cmd):
             key = args[0] + "." + args[1]
             if key in a_dict:
                 subkey = args[2]
-                """
-                temp = [args[2], args[3]]
-                subvalue = self.typecheck(temp)
-                if type(subvalue) is str:
-                """
                 subvalue = args[3].replace('"', '')
                 subdict = a_dict[key]
                 setattr(subdict, subkey, subvalue)
                 storage.save()
-
-    '''
-    def typecheck(self, arg):
-        """typecast attributes appropriately
-        Returns:
-            typecasted argument
-        """
-        integers = ['number_rooms', 'number_bathrooms', 'max_guest',
-                    'price_by_night']
-        floats = ['latitude', 'longitude']
-        if arg[0] in integers:
-            arg[1] = int(arg[1])
-        elif arg[0] in floats:
-            arg[1] = float(arg[1])
-        else:
-            try:
-                if type(eval(str(arg[1]))) is not str:
-                    arg[1] = eval(str(arg[1]))
-            except NameError:
-                pass
-        return arg[1]
-    '''
 
     def emptyline(self):
         """override built-in emptyline and remove previous command history"""
@@ -148,7 +121,7 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, args):
         """Quit command to exit the program
         """
-        raise SystemExit
+        return True
 
     def do_EOF(self, line):
         """Exit"""
