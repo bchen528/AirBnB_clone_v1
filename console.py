@@ -128,8 +128,11 @@ class HBNBCommand(cmd.Cmd):
         elif arg[0] in floats:
             arg[1] = float(arg[1])
         else:
-            if type(eval(arg[1])) is not str:
-                arg[1] = eval(arg[1])
+            try:
+                if type(eval(str(arg[1]))) is not str:
+                    arg[1] = eval(str(arg[1]))
+            except NameError:
+                pass
         return arg[1]
 
     def emptyline(self):
