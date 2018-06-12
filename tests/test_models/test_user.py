@@ -4,7 +4,7 @@ import unittest
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models.user import User
-
+import pep8
 
 class TestAdditionalClasses(unittest.TestCase):
     """Additional Class Test"""
@@ -21,6 +21,14 @@ class TestAdditionalClasses(unittest.TestCase):
 
     def tearDown(self):
         pass
+
+    def test_style_check(self):
+        """
+        Tests pep8 style
+        """
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(['models/engine/file_storage.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
 
     def test_additional_classes(self):
         """Tests all additional classes"""
