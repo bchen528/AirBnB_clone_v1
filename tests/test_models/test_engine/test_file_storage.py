@@ -20,14 +20,15 @@ class TestFileStorage(unittest.TestCase):
     """FileStorage Test Class"""
     @classmethod
     def setUpClass(cls):
-        pass
+        cls.p1 = Place()
+        cls.p1.city_id = "Richmond"
+        cls.p1.state_id = "VA"
+        cls.p1.number_rooms = 8
+        cls.p1.description = "awesome"
 
     @classmethod
     def tearDownClass(cls):
-        pass
-
-    def setUp(self):
-        pass
+        del cls.p1
 
     def tearDown(self):
         """TearDown for each method in TestFileStorage class"""
