@@ -14,11 +14,13 @@ class TestBase(unittest.TestCase):
     """TestBase Class"""
     @classmethod
     def setUpClass(cls):
-        pass
+        cls.b1 = BaseModel()
+        cls.b1.name = "Nick"
+        cls.b1.my_number = 122
 
     @classmethod
     def tearDownClass(cls):
-        pass
+        del cls.b1
 
     def setUp(self):
         pass
@@ -37,17 +39,15 @@ class TestBase(unittest.TestCase):
 
     def test_base_instance(self):
         """b1 is an instance of BaseModel"""
-        b1 = BaseModel()
-        self.assertIsInstance(b1, BaseModel)
+        self.assertIsInstance(self.b1, BaseModel)
 
     def test_base_public_attributes(self):
         """Tests Public Attributes of BaseModel instances"""
-        b1 = BaseModel()
-        self.assertIsInstance(b1.id, str)
-        self.assertIsInstance(b1.created_at, datetime)
-        self.assertIsInstance(b1.updated_at, datetime)
-        self.assertEqual(str(b1.created_at).split('.')[0],
-                         str(b1.updated_at).split('.')[0])
+        self.assertIsInstance(self.b1.id, str)
+        self.assertIsInstance(self.b1.created_at, datetime)
+        self.assertIsInstance(self.b1.updated_at, datetime)
+        self.assertEqual(str(self.b1.created_at).split('.')[0],
+                         str(self.b1.updated_at).split('.')[0])
 
     def test_string_and_dict_and_storage_base_model(self):
         """
@@ -117,23 +117,20 @@ class TestBase(unittest.TestCase):
 
     def test_kwargs(self):
         """Kwargs input on BaseModel instantiation"""
-        b1 = BaseModel()
-        b1.name = "Nick"
-        b1.my_number = 122
 
-        b1_dict = b1.to_dict()
+        b1_dict = self.b1.to_dict()
         b2 = BaseModel(**b1_dict)
         b2_dict = b2.to_dict()
-        self.assertEqual(b2_dict['name'], b1.name)
-        self.assertEqual(b2_dict['my_number'], b1.my_number)
+        self.assertEqual(b2_dict['name'], self.b1.name)
+        self.assertEqual(b2_dict['my_number'], self.b1.my_number)
         self.assertEqual(
             b2_dict['updated_at'].split('T')[0], str(
-                b1.updated_at).split()[0])
+                self.b1.updated_at).split()[0])
         self.assertEqual(
             b2_dict['created_at'].split('T')[1], str(
-                b1.created_at).split()[1])
-        self.assertEqual(b2_dict['id'], b1.id)
-        self.assertEqual(b2_dict['__class__'], type(b1).__name__)
+                self.b1.created_at).split()[1])
+        self.assertEqual(b2_dict['id'], self.b1.id)
+        self.assertEqual(b2_dict['__class__'], type(self.b1).__name__)
 
     def test_errs(self):
         """More or less inputs when calling specific base methods"""
@@ -164,8 +161,7 @@ class TestBase(unittest.TestCase):
 
     def test_init(self):
         """check if an instance was created upon initialization"""
-        b1 = BaseModel()
-        self.assertTrue(isinstance(b1, BaseModel))
+        self.assertTrue(isinstance(self.b1, BaseModel))
 
 if __name__ == '__main__':
     unittest.main()
