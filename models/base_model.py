@@ -60,8 +60,10 @@ class BaseModel:
         Returns:
             dictionary containing all key/values of __dict__ of instance
         """
-        a_dict = {}
-        a_dict.update(self.__dict__)
+        a_dict = dict(self.__dict__)
+#        a_dict = self.__dict__
+#        a_dict = {}
+#        a_dict.update(self.__dict__)
         for key in a_dict:
             if key == "id":
                 a_dict[key] = self.id
