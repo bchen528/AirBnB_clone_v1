@@ -144,6 +144,28 @@ class TestBase(unittest.TestCase):
             b1.to_dict("I'm not a kwarg")
             print(b1.save)
 
+    def test_save(self):
+        """check save function of BaseModel"""
+        b1 = BaseModel()
+        b1.save()
+        self.assertNotEqual(b1.created_at, b1.updated_at)
+
+    def test_checking_for_functions(self):
+        """check existence of docstring in BaseModel functions"""
+        self.assertIsNotNone(BaseModel.__doc__)
+        self.assertIsNotNone(BaseModel.save.__doc__)
+        self.assertIsNotNone(BaseModel.to_dict.__doc__)
+
+    def test_attributes(self):
+        """check if attributes exists"""
+        self.assertTrue(hasattr(BaseModel, "__init__"))
+        self.assertTrue(hasattr(BaseModel, "save"))
+        self.assertTrue(hasattr(BaseModel, "to_dict"))
+
+    def test_init(self):
+        """check if an instance was created upon initialization"""
+        b1 = BaseModel()
+        self.assertTrue(isinstance(b1, BaseModel))
 
 if __name__ == '__main__':
     unittest.main()
