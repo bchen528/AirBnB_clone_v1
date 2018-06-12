@@ -107,14 +107,17 @@ class HBNBCommand(cmd.Cmd):
             key = args[0] + "." + args[1]
             if key in a_dict:
                 subkey = args[2]
+                """
                 temp = [args[2], args[3]]
                 subvalue = self.typecheck(temp)
                 if type(subvalue) is str:
-                    subvalue = args[3].replace('"', '')
+                """
+                subvalue = args[3].replace('"', '')
                 subdict = a_dict[key]
                 setattr(subdict, subkey, subvalue)
                 storage.save()
 
+    '''
     def typecheck(self, arg):
         """typecast attributes appropriately
         Returns:
@@ -134,6 +137,7 @@ class HBNBCommand(cmd.Cmd):
             except NameError:
                 pass
         return arg[1]
+    '''
 
     def emptyline(self):
         """override built-in emptyline and remove previous command history"""
