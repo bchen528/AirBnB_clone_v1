@@ -50,7 +50,8 @@ class BaseModel:
         return self.__str__()
 
     def save(self):
-        """updates public instance attribute updated_at with current datetime"""
+        """updates public instance attribute
+        updated_at with current datetime"""
         self.updated_at = datetime.now()
         models.storage.save()
 
