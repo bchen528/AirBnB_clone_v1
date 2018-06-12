@@ -79,7 +79,7 @@ The purpose of the AirBnb project is to:
   * `__str__` - creates formatted string representation of instance
   * `__repr__` - returns string representation of instance
   * `save` - updates public instance attribute updated_at with current datetime
-  * `to_dict` - creates a dictionary containing all keys/values of "__dict__" of the instance
+  * `to_dict` - creates a dictionary containing all keys/values of `__dict__` of the instance
 * [user.py](/models/user.py) - class User
 * [city.py](/models/city.py) - class City
 * [state.py](/models/state.py) - class State
