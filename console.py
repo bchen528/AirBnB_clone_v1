@@ -21,7 +21,7 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, cls):
         """create a new instance of BaseModel
         """
-        if len(cls) == 0:
+        if len(cls) == 0 or cls == "":
             print("** class name missing **")
         elif cls not in self.classes:
             print("** class doesn't exist **")
@@ -36,11 +36,11 @@ class HBNBCommand(cmd.Cmd):
         args = "".join(argv)
         args = [i.strip() for i in args.split(' ')]
 
-        if len(args) == 0:
+        if len(args) == 0 or args[0] == "":
             print("** class name missing **")
         elif args[0] not in self.classes:
             print("** class doesn't exist **")
-        elif len(args) == 1:
+        elif len(args) == 1 or args[1] == "":
             print("** instance id missing **")
         elif len(args) == 2:
             a_dict = storage.all()
@@ -67,11 +67,11 @@ class HBNBCommand(cmd.Cmd):
         args = "".join(argv)
         args = [i.strip() for i in args.split(' ')]
 
-        if len(args) == 0:
+        if len(args) == 0 or args[0] == "":
             print("** class name missing **")
         elif args[0] not in self.classes:
             print("** class doesn't exist **")
-        elif len(args) == 1:
+        elif len(args) == 1 or args[1] == "":
             print("** instance id missing **")
         elif len(args) == 2:
             a_dict = storage.all()
@@ -89,11 +89,11 @@ class HBNBCommand(cmd.Cmd):
         args = "".join(argv)
         args = [i.strip() for i in args.split(' ')]
 
-        if len(args) == 0:
+        if len(args) == 0 or args[0] == "":
             print("** class name missing **")
         elif args[0] not in self.classes:
             print("** class doesn't exist **")
-        elif len(args) == 1:
+        elif len(args) == 1 or args[1] == "":
             print("** instance id missing **")
         elif len(args) == 2:
             a_dict = storage.all()
