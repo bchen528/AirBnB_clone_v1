@@ -71,9 +71,10 @@ class HBNBCommand(cmd.Cmd):
                 print("** attribute name missing **")
             elif len(args) < 4:
                 print("** value missing **")
-            if type(int(args[3])) == type(eval(args[3])):
+
+            if type(eval(args[3])) is int:
                 return args[2], int(args[3])
-            elif type(float(args[3])) == type(eval(args[3])):
+            elif type(eval(args[3])) is float:
                 return args[2], float(args[3])
             else:
                 return args[2], args[3]
@@ -173,6 +174,7 @@ class HBNBCommand(cmd.Cmd):
             line (string): string of all the commands
         """
         return True
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
