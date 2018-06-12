@@ -1,13 +1,20 @@
 #!/user/bin/env python3
 """Module Test Case for FileStorage"""
 import unittest
-from models.base_model import BaseModel
 from datetime import datetime
 import re
 import os
-from models.engine.file_storage import FileStorage
-import models
 import pep8
+import models
+from models.engine.file_storage import FileStorage
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+
 
 class TestFileStorage(unittest.TestCase):
     """FileStorage Test Class"""
@@ -47,6 +54,7 @@ class TestFileStorage(unittest.TestCase):
 
     def test_errs(self):
         """Test most mal usage of FileStorage methods"""
+        b1 = BaseModel()
         with self.assertRaises(AttributeError):
             FileStorage.__objects
             FileStorage.__File_path
@@ -57,7 +65,6 @@ class TestFileStorage(unittest.TestCase):
             models.save(b1)
             models.reload(b1)
             models.all(b1)
-
 
 if __name__ == '__main__':
     unittest.main()
