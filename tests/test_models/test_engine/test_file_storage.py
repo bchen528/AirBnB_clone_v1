@@ -7,7 +7,7 @@ import re
 import os
 from models.engine.file_storage import FileStorage
 import models
-
+import pep8
 
 class TestFileStorage(unittest.TestCase):
     """FileStorage Test Class"""
@@ -27,6 +27,14 @@ class TestFileStorage(unittest.TestCase):
         models.storage.delete_obj()
         if os.path.exists('file.json'):
             os.remove('file.json')
+
+    def test_style_check(self):
+        """
+        Tests pep8 style
+        """
+        style = pep8.StyleGuide(quiet=True)
+        p = style.check_files(['models/engine/file_storage.py'])
+        self.assertEqual(p.total_errors, 0, "fix pep8")
 
     def test_fs_instance(self):
         """FileStorage class save checks, reload checks"""
