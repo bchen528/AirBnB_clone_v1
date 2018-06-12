@@ -18,7 +18,7 @@
 
 ## Description
 
-**hbnb** is a full clone of the web application AirBnB. This clone was constructed in five steps. For the first step, we have built a simple command interpreter that parses and evaluates input from the commandline appropriately. Test suite included. Future steps to come.
+**hbnb** is a full clone of the web application AirBnB. This clone will be constructed in five phases. Currently, we have completed the first phase - to build a simple command interpreter that parses and evaluates input from the commandline appropriately. Test suite included. Future steps to come.
 
 
 ## Purpose
