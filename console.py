@@ -116,7 +116,10 @@ class HBNBCommand(cmd.Cmd):
                 storage.save()
 
     def typecheck(self, arg):
-        """typecast attributes appropriately"""
+        """typecast attributes appropriately
+        Returns:
+            typecasted argument
+        """
         integers = ['number_rooms', 'number_bathrooms', 'max_guest',
                     'price_by_night']
         floats = ['latitude', 'longitude']
