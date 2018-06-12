@@ -2,6 +2,7 @@
 """This is a class HBNBCommand"""
 import cmd
 import json
+import shlex
 from sys import argv
 from models import storage
 from models.base_model import BaseModel
@@ -33,8 +34,7 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, argv):
         """prints string representation of an instance based on class name, id
         """
-        args = "".join(argv)
-        args = [i.strip() for i in args.split(' ')]
+        args = shlex.split(argv)
 
         if len(args) == 0 or args[0] == "":
             print("** class name missing **")
@@ -64,8 +64,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, argv):
         """deletes an instance based on the class name and id"""
-        args = "".join(argv)
-        args = [i.strip() for i in args.split(' ')]
+        args = shlex.split(argv)
 
         if len(args) == 0 or args[0] == "":
             print("** class name missing **")
@@ -86,8 +85,7 @@ class HBNBCommand(cmd.Cmd):
         """updates an instance based on the class name and id by
         adding or updating attribute
         """
-        args = "".join(argv)
-        args = [i.strip() for i in args.split(' ')]
+        args = shlex.split(argv)
 
         if len(args) == 0 or args[0] == "":
             print("** class name missing **")
@@ -108,10 +106,7 @@ class HBNBCommand(cmd.Cmd):
             a_dict = storage.all()
             key = args[0] + "." + args[1]
             if key in a_dict:
-                subkey = args[2]
-                subvalue = args[3].replace('"', '')
-                subdict = a_dict[key]
-                setattr(subdict, subkey, subvalue)
+                setattr(a_dict[key], args[2], args[3])
                 storage.save()
 
     def emptyline(self):
