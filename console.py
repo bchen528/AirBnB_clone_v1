@@ -107,15 +107,30 @@ class HBNBCommand(cmd.Cmd):
             key = args[0] + "." + args[1]
             if key in a_dict:
                 subkey = args[2]
-                subvalue = args[3].replace('"', '')
+                temp = [args[2], args[3]]
+                subvalue = self.typecheck(temp)
+                if type(subvalue) is str:
+                    subvalue = args[3].replace('"', '')
                 subdict = a_dict[key]
                 setattr(subdict, subkey, subvalue)
                 storage.save()
 
-    def do_typecheck(self):
+    def typecheck(self, arg):
         """typecast attributes appropriately"""
+        integers = ['number_rooms', 'number_bathrooms', 'max_guest',
+                    'price_by_night']
+        floats = ['latitude', 'longitude']
+        if arg[0] in integers:
+            arg[1] = int(arg[1])
+        elif arg[0] in floats:
+            arg[1] = float(arg[1])
+        else:
+            if type(eval(arg[1])) is not str:
+                arg[1] = eval(arg[1])
+        return arg[1]
 
     def emptyline(self):
+        """override built-in emptyline and remove previous command history"""
         pass
 
     def do_quit(self, args):
