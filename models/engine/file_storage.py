@@ -43,3 +43,6 @@ class FileStorage:
                             FileStorage.__objects[key] = n_value
         except Exception:
             pass
+
+    def delete_obj(self):
+        FileStorage.__objects.clear()

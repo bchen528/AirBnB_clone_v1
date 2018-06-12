@@ -15,7 +15,7 @@ class BaseModel:
             kwargs (dict): dictionary of arguments
         """
         if kwargs and len(kwargs) != 0:
-            ks = ['name', 'id', 'my_number']
+            ks = ['id', 'number', 'my_number', 'name']
             self.__dict__.update((k, v) for k, v in kwargs.items() if k in ks)
             for key, value in kwargs.items():
                 if key == 'created_at':
