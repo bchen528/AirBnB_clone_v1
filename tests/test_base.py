@@ -1,10 +1,5 @@
-#!/user/bin/env python3
-"""Module Test Case"""
-import unittest
-from models.base_model import BaseModel
-from datetime import datetime
-import re
-import os
+
+rt os
 from models.engine.file_storage import FileStorage
 import models
 
