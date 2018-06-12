@@ -112,6 +112,9 @@ class HBNBCommand(cmd.Cmd):
                 setattr(subdict, subkey, subvalue)
                 storage.save()
 
+    def do_typecheck(self):
+        """typecast attributes appropriately"""
+
     def emptyline(self):
         pass
 
