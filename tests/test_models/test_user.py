@@ -35,7 +35,6 @@ class TestAdditionalClasses(unittest.TestCase):
         self.assertIsInstance(u1.password, str)
         self.assertIsInstance(u1.first_name, str)
         self.assertIsInstance(u1.last_name, str)
-        self.assertIsInstance(p1.amenity_ids, list)
 
 if __name__ == '__main__':
     unittest.main()
