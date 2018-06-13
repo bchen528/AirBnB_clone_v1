@@ -85,10 +85,23 @@ class HBNBCommand(cmd.Cmd):
         if fx_name in HBNBCommand.__dict__:
             line = " ".join(args)
             #print(HBNBCommand.__dict__[fx_name])
-            self.do_all(args[1])
+            if fx_name == "do_all":
+                self.do_all(args[1])
+            elif fx_name == "do_count":
+                self.do_count(args[1])
         else:
             print("*** Unknown syntax: {}".
                   format(args[1] + "." + args[0] + "()"))
+
+    def do_count(self, line):
+        """find number of instances of specific class"""
+        num_instances = 0
+        a_dict = storage.all()
+        for key, value in a_dict.items():
+            value = value.to_dict()
+            if value['__class__'] == line:
+                num_instances += 1
+        print(num_instances)
 
     def do_destroy(self, argv):
         """deletes an instance based on the class name and id"""
