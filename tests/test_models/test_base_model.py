@@ -105,8 +105,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(c_val['float_num'], 89.9)
         self.assertEqual(c_val['created_at'].split('T')[0],
                          c_val['updated_at'].split('T')[0])
-#        self.assertNotEqual(c_val['created_at'].split('T')[1],
- #                           c_val['updated_at'].split('T')[1])
+        self.assertEqual(c_val['created_at'].split('T')[1],
+                            c_val['updated_at'].split('T')[1])
 
     def test_kwargs(self):
         """Kwargs input on BaseModel instantiation"""
