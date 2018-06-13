@@ -1,29 +1,21 @@
-#!/user/bin/env python3
-"""Module Test Case"""
+#!/usr/bin/python3
+"""Unit test for class BaseModel"""
 import unittest
-from models.base_model import BaseModel
-from datetime import datetime
-import re
 import os
-from models.engine.file_storage import FileStorage
-import models
 import pep8
+import re
+import models
+from datetime import datetime
+from models.base_model import BaseModel
 
 
-class TestBase(unittest.TestCase):
+class TestBaseModel(unittest.TestCase):
     """TestBase Class"""
     @classmethod
     def setUpClass(cls):
         cls.b1 = BaseModel()
         cls.b1.name = "Nick"
         cls.b1.my_number = 122
-
-    @classmethod
-    def tearDownClass(cls):
-        del cls.b1
-
-    def setUp(self):
-        pass
 
     def tearDown(self):
         """Resets the FileStore.__objects private class attribute"""
