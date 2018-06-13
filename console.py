@@ -19,6 +19,9 @@ class HBNBCommand(cmd.Cmd):
     classes = {"BaseModel", "User", "Place", "City", "State",
                "Amenity", "Review"}
 
+    opts = {"create", "show", "all", "destroy", "update",
+            "emptyline", "quit", "EOF", "help"}
+
     def do_create(self, cls):
         """create a new instance of BaseModel
         """
@@ -61,6 +64,24 @@ class HBNBCommand(cmd.Cmd):
             print(a_list)
         else:
             print("** class doesn't exist **")
+
+    def precmd(self, line):
+        """executed before commandline line is interpreted,
+            overrides built-in precmd
+        Returns:
+            commandline string to be interpreted
+        """
+        args = shlex.split(line)
+        if len(args) == 1 and args[0] not in self.opts:
+            args = (line.strip('()')).split('.')
+            #print(args)
+            temp = args[0]
+            args[0] = args[1]
+            args[1] = temp
+            #print(args)
+            #print(" ".join(args))
+            return " ".join(args)
+        return line
 
     def do_destroy(self, argv):
         """deletes an instance based on the class name and id"""
