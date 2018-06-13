@@ -18,10 +18,6 @@ class HBNBCommand(cmd.Cmd):
     """class HBNBCommand"""
     classes = {"BaseModel", "User", "Place", "City", "State",
                "Amenity", "Review"}
-    '''
-    opts = {"create", "show", "all", "destroy", "update",
-            "emptyline", "quit", "EOF", "help"}
-    '''
 
     def do_create(self, cls):
         """create a new instance of BaseModel
@@ -59,32 +55,40 @@ class HBNBCommand(cmd.Cmd):
         on the class name
         """
         a_list = []
-        if line == "" or line in self.classes:
+        if line == "":
             for key, value in (storage.all()).items():
                 a_list.append(value)
+            print(a_list)
+        elif line in self.classes:
+            for key, value in (storage.all()).items():
+                if key == "{}.{}".format(line, value.id):
+                    #print(value.id)
+                    a_list.append(value)
+                    #print(key)
             print(a_list)
         else:
             print("** class doesn't exist **")
 
-    '''
-    def precmd(self, line):
-        """executed before commandline line is interpreted,
-            overrides built-in precmd
-        Returns:
-            commandline string to be interpreted
-        """
+    def default(self, line):
+        """method called on input line when command prefix is not recognized"""
+        #print(line)
+        #print(HBNBCommand.__dict__)
         args = shlex.split(line)
-        if len(args) == 1 and args[0] not in self.opts:
-            args = (line.strip('()')).split('.')
-            #print(args)
-            temp = args[0]
-            args[0] = args[1]
-            args[1] = temp
-            #print(args)
-            #print(" ".join(args))
-            return " ".join(args)
-        return line
-    '''
+        args = (line.strip('()')).split('.')
+        #print(args)
+        temp = args[0]
+        args[0] = args[1]
+        args[1] = temp
+        #print(args)
+        fx_name = "do_" + args[0]
+        #print(fx_name)
+        if fx_name in HBNBCommand.__dict__:
+            line = " ".join(args)
+            #print(HBNBCommand.__dict__[fx_name])
+            self.do_all(args[1])
+        else:
+            print("*** Unknown syntax: {}".
+                  format(args[1] + "." + args[0] + "()"))
 
     def do_destroy(self, argv):
         """deletes an instance based on the class name and id"""
@@ -140,7 +144,7 @@ class HBNBCommand(cmd.Cmd):
     def do_quit(self, args):
         """Quit command to exit the program
         """
-        return True
+        raise SystemExit
 
     def do_EOF(self, line):
         """Exit"""
