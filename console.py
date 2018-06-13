@@ -42,7 +42,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(args) == 1 or args[1] == "":
             print("** instance id missing **")
-        elif len(args) == 2:
+        else:
             a_dict = storage.all()
             key = args[0] + "." + args[1]
             if key in a_dict:
@@ -113,7 +113,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(args) == 1 or args[1] == "":
             print("** instance id missing **")
-        elif len(args) == 2:
+        else:
             a_dict = storage.all()
             key = args[0] + "." + args[1]
             if key in a_dict:
