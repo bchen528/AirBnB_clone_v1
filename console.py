@@ -18,9 +18,10 @@ class HBNBCommand(cmd.Cmd):
     """class HBNBCommand"""
     classes = {"BaseModel", "User", "Place", "City", "State",
                "Amenity", "Review"}
-
+    '''
     opts = {"create", "show", "all", "destroy", "update",
             "emptyline", "quit", "EOF", "help"}
+    '''
 
     def do_create(self, cls):
         """create a new instance of BaseModel
@@ -65,6 +66,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
+    '''
     def precmd(self, line):
         """executed before commandline line is interpreted,
             overrides built-in precmd
@@ -82,6 +84,7 @@ class HBNBCommand(cmd.Cmd):
             #print(" ".join(args))
             return " ".join(args)
         return line
+    '''
 
     def do_destroy(self, argv):
         """deletes an instance based on the class name and id"""
