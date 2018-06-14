@@ -74,24 +74,53 @@ class HBNBCommand(cmd.Cmd):
         #print(line)
         #print(HBNBCommand.__dict__)
         args = shlex.split(line)
+        #print(args)
         args = (line.strip('()')).split('.')
         #print(args)
-        temp = args[0]
-        args[0] = args[1]
-        args[1] = temp
+        #print(" ".join(args))
+        """for do_show"""
+        show_strip = self.do_showStrip(args[1])
+        show_strip.append(args[0])
+        #print(show_strip)
         #print(args)
-        fx_name = "do_" + args[0]
-        #print(fx_name)
-        if fx_name in HBNBCommand.__dict__:
-            line = " ".join(args)
-            #print(HBNBCommand.__dict__[fx_name])
-            if fx_name == "do_all":
-                self.do_all(args[1])
-            elif fx_name == "do_count":
-                self.do_count(args[1])
+        if len(show_strip) == 3:
+            show_temp = show_strip[1]
+            show_strip[1] = show_strip[2]
+            show_strip[2] = show_temp
+            sub_string = []
+            sub_string.append(show_strip[1])
+            sub_string.append(show_strip[2])
+            #print(sub_string)
+            #print(show_strip)
+            show_string = " ".join(sub_string)
+            #print(show_string)
+            show_fx_name = "do_" + show_strip[0]
+            if show_fx_name in HBNBCommand.__dict__:
+                if show_fx_name == "do_show":
+                    self.do_show(show_string)
+            else:
+                print("*** Unknown syntax: {}".
+                      format(show_strip[1] + "." + show_strip[0] +
+                             "({})".format(show_strip[2])))
         else:
-            print("*** Unknown syntax: {}".
-                  format(args[1] + "." + args[0] + "()"))
+            temp = args[0]
+            args[0] = args[1]
+            args[1] = temp
+            #print(args)
+            fx_name = "do_" + args[0]
+            #print(fx_name)
+            if fx_name in HBNBCommand.__dict__:
+                line = " ".join(args)
+                #print(HBNBCommand.__dict__[fx_name])
+                if fx_name == "do_all":
+                    self.do_all(args[1])
+                elif fx_name == "do_count":
+                    self.do_count(args[1])
+                    #elif fx_name == "do_show":
+                    #self.do_show(show_string)
+                else:
+                    print("*** Unknown syntax: {}".
+                          format(args[1] + "." + args[0] + "()"))
 
     def do_count(self, line):
         """find number of instances of specific class"""
@@ -102,6 +131,10 @@ class HBNBCommand(cmd.Cmd):
             if value['__class__'] == line:
                 num_instances += 1
         print(num_instances)
+
+    def do_showStrip(self, line):
+        """strip function arguments appropriately"""
+        return (line.strip('"')).split('("')
 
     def do_destroy(self, argv):
         """deletes an instance based on the class name and id"""
