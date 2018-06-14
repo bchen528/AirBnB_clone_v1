@@ -78,30 +78,32 @@ class HBNBCommand(cmd.Cmd):
         args = (line.strip('()')).split('.')
         #print(args)
         #print(" ".join(args))
-        """for do_show"""
-        show_strip = self.do_showStrip(args[1])
-        show_strip.append(args[0])
-        #print(show_strip)
+        """for show and destroy"""
+        plus_args = self.do_sdStrip(args[1])
+        plus_args.append(args[0])
+        #print(plus_args)
         #print(args)
-        if len(show_strip) == 3:
-            show_temp = show_strip[1]
-            show_strip[1] = show_strip[2]
-            show_strip[2] = show_temp
+        if len(plus_args) == 3:
+            show_temp = plus_args[1]
+            plus_args[1] = plus_args[2]
+            plus_args[2] = show_temp
             sub_string = []
-            sub_string.append(show_strip[1])
-            sub_string.append(show_strip[2])
+            sub_string.append(plus_args[1])
+            sub_string.append(plus_args[2])
             #print(sub_string)
-            #print(show_strip)
-            show_string = " ".join(sub_string)
+            #print(plus_args)
+            args_string = " ".join(sub_string)
             #print(show_string)
-            show_fx_name = "do_" + show_strip[0]
-            if show_fx_name in HBNBCommand.__dict__:
-                if show_fx_name == "do_show":
-                    self.do_show(show_string)
+            sd_fx_name = "do_" + plus_args[0]
+            if sd_fx_name in HBNBCommand.__dict__:
+                if sd_fx_name == "do_show":
+                    self.do_show(args_string)
+                if sd_fx_name == "do_destroy":
+                    self.do_destroy(args_string)
             else:
                 print("*** Unknown syntax: {}".
-                      format(show_strip[1] + "." + show_strip[0] +
-                             "({})".format(show_strip[2])))
+                      format(plus_args[1] + "." + plus_args[0] +
+                             "({})".format(plus_args[2])))
         else:
             temp = args[0]
             args[0] = args[1]
@@ -132,7 +134,7 @@ class HBNBCommand(cmd.Cmd):
                 num_instances += 1
         print(num_instances)
 
-    def do_showStrip(self, line):
+    def do_sdStrip(self, line):
         """strip function arguments appropriately"""
         return (line.strip('"')).split('("')
 
