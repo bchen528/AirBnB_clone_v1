@@ -101,9 +101,9 @@ ul.popover li h2 {
 }
 
 div.locations:hover ul.popover {
-    opacity: 0.9;
+    opacity: 1;
 }
 
 div.amenities:hover ul.popover {
-    opacity: 0.9;
+    opacity: 1;
 }
