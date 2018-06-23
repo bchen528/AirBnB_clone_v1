@@ -79,7 +79,7 @@ ul.popover {
     margin: 0;
     padding-bottom: 20px;
     top: 100%;
-    opacity: 0;
+    display: none;
     overflow: scroll;
 }
 
@@ -101,9 +101,9 @@ ul.popover li h2 {
 }
 
 div.locations:hover ul.popover {
-    opacity: 1;
+    display: block;
 }
 
 div.amenities:hover ul.popover {
-    opacity: 1;
+    display: block;
 }
