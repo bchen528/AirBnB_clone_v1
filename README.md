@@ -51,8 +51,10 @@ The purpose of Phase 1 is to:
   * write and read a JSON file
   * manage datetime
   * create UUIDs
-  * use *args and **kwargs
+  * use `*args` and `**kwargs`
   * handle named arguments in a function
+* create an HTML page
+* add complex CSS style to an element
 
 ## Requirements
 
