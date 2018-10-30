@@ -25,7 +25,7 @@
 ![webstatic_diagram](https://s3.amazonaws.com/intranet-projects-files/concepts/74/hbnb_step1.png)
 
 **Links to other versions:**
-* [AirBnB_clone_v2: MySQL, Deploy static, Webframework](https://github.com/bchen528/AirBnB_clone_v2)
+* [AirBnB_clone_v2: MySQL, Deploy static, Web framework](https://github.com/bchen528/AirBnB_clone_v2)
 * [AirBnB_clone_v3: RESTful API](https://github.com/bchen528/AirBnB_clone_v3)
 * [AirBnB_clone_v4: Web dynamic](https://github.com/bchen528/AirBnB_clone_v4) (Final version!)
 
