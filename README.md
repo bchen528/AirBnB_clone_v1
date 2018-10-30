@@ -117,6 +117,9 @@ The purpose of the AirBnb project is to:
    * [8-index.html](web_static/8-index.html) - an HTML page that displays a header, a footer, a filter box (dropdown list) and the result of the search
    ![8-index.html](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/8-index.png)
    
+   * [101-index.html](web_static/101-index.html) - an HTML page that displays a header, a footer, a filter box (dropdown list) and the result of the search, uses Flexible boxes for all Place articles (same display as 8-index.html)
+   
+   * [102-index.html](web_static/101-index.html) - an HTML page that displays a header, a footer, a filter box (dropdown list) and the result of the search; uses Flexible boxes for all Place articles; has responsive design (same display as 8-index.html)
    * [styles](web_static/styles) - contains CSS files
       * [2-common.css](web_static/styles/2-common.css) - global (i.e. body) style
       * [2-header.css](web_static/styles/2-header.css) - header style
@@ -130,7 +133,9 @@ The purpose of the AirBnb project is to:
       * [6-filters.css](web_static/styles/6-filters.css) - filters style
       * [7-places.css](web_static/styles/7-places.css) - places style
       * [8-places.css](web_static/styles/8-places.css) - places style
-  
+      * [101-places.css](web_static/styles/101-places.css) - places style
+      * [102-places.css](web_static/styles/102-places.css) - places style
+
 ## Execution
 
 ### Unit Testing
