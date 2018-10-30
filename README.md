@@ -1,4 +1,4 @@
-# 0x00. AirBnB clone - The console
+# 0x00. AirBnB clone - The console 
 
 ![hbnb](https://camo.githubusercontent.com/a0c52a69dc410e983b8c63fa4aa57e83cb4157cd/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f696e7472616e65742d70726f6a656374732d66696c65732f686f6c626572746f6e7363686f6f6c2d6869676865722d6c6576656c5f70726f6772616d6d696e672b2f3236332f4842544e2d68626e622d46696e616c2e706e67)
 
@@ -86,7 +86,47 @@ The purpose of the AirBnb project is to:
 * [amenity.py](/models/amenity.py) - class Amenity
 * [`__init__.py`](/models/__init__.py) - initialization code for Python package models
 * [tests](/tests/) - unit test files
+ * [web_static](web_static) - contains HTML, CSS, and images files
+   * [0-index.html](web_static/0-index.html) - a basic HTML page that contains a header and footer like below:
+   ![0-index.html](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/0-index.png)
+  
+   * [1-index.html](web_static/1-index.html) - an HTML page that displays a header and a footer by using the style tag in the head tag (same display as 0-index.html)
 
+   * [2-index.html](web_static/2-index.html) - an HTML page that displays a header and a footer by using CSS files (same display as 1-index.html)
+
+   * [3-index.html](web_static/3-index.html) - an HTML page that displays a header and footer by using CSS files to display like below:
+   ![3-index.html](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/3-index.png)
+
+   * [4-index.html](web_static/4-index.html) - an HTML page that displays a header, footer and a filters box with a search button
+   ![4-index.html](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/4-index.png)
+
+   * [5-index.html](web_static/5-index.html) - an HTML page that displays a header, footer and a filters box
+   ![5-index.html](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/5-index.png)
+
+   * [6-index.html](web_static/6-index.html) - an HTML page that displays a header, footer and a filters box with dropdown
+   ![6-index.html_part1](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/6-index_0.png)
+   ![6-index.html_part2](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/6-index_1.png)
+
+   * [7-index.html](web_static/7-index.html) - an HTML page that displays a header, footer, a filters box with dropdown and results
+   ![7-index.html](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/7-index.png)
+
+   * [8-index.html](web_static/8-index.html) - an HTML page that displays a header, a footer, a filter box (dropdown list) and the result of the search
+   ![8-index.html](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/8-index.png)
+   
+   * [styles](web_static/styles) - contains CSS files
+      * [2-common.css](web_static/styles/2-common.css) - global (i.e. body) style
+      * [2-header.css](web_static/styles/2-header.css) - header style
+      * [2-footer.css](web_static/styles/2-footer.css) - footer style
+      * [3-common.css](web_static/styles/3-common.css) - body style
+      * [3-header.css](web_static/styles/3-header.css) - header style
+      * [3-footer.css](web_static/styles/3-footer.css) - footer style
+      * [4-common.css](web_static/styles/4-common.css) - body style
+      * [4-filters.css](web_static/styles/4-filters.css) - filters style
+      * [5-filters.css](web_static/styles/5-filters.css) - filters style
+      * [6-filters.css](web_static/styles/6-filters.css) - filters style
+      * [7-places.css](web_static/styles/7-places.css) - places style
+      * [8-places.css](web_static/styles/8-places.css) - places style
+  
 ## Execution
 
 ### Unit Testing
@@ -138,6 +178,8 @@ EOF  help  quit
 (hbnb) 
 $
 ```
+
+
 
 ## Bugs
 
