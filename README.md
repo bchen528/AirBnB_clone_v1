@@ -78,25 +78,28 @@ The purpose of Phase 1 is to:
   * `emptyline` - ensures that hitting 'enter' will not remember the last command
   * `do_quit` - quit program
   * `do_EOF` - exit at end of file
-* [file_storage.py](/models/engine/file_storage.py) - class FileStorage
-  * `all` - returns the dictionary __objects
-  * `new` - sets in __objects the obj with key <obj class name>.id
-  * `save` - serializes __objects to the JSON file (path: __file_path)
-  * `reload` - deserializes the JSON file to __objects
-* [base_model.py](/models/base_model.py) - parent class that will take care of initialization/serialization/deserialization of future instances
-  * `__init__` - initialize instance attributes
-  * `__str__` - creates formatted string representation of instance
-  * `__repr__` - returns string representation of instance
-  * `save` - updates public instance attribute updated_at with current datetime
-  * `to_dict` - creates a dictionary containing all keys/values of `__dict__` of the instance
-* [user.py](/models/user.py) - class User
-* [city.py](/models/city.py) - class City
-* [state.py](/models/state.py) - class State
-* [place.py](/models/place.py) - class Place
-* [review.py](/models/review.py) - class Review
-* [amenity.py](/models/amenity.py) - class Amenity
-* [`__init__.py`](/models/__init__.py) - initialization code for Python package models
-* [tests](/tests/) - unit test files
+* [models](models) - contains models and engine files
+  * [base_model.py](/models/base_model.py) - parent class that will take care of initialization/serialization/deserialization of future instances
+    * `__init__` - initialize instance attributes
+    * `__str__` - creates formatted string representation of instance
+    * `__repr__` - returns string representation of instance
+    * `save` - updates public instance attribute updated_at with current datetime
+    * `to_dict` - creates a dictionary containing all keys/values of `__dict__` of the instance
+  * [user.py](/models/user.py) - class User
+  * [city.py](/models/city.py) - class City
+  * [state.py](/models/state.py) - class State
+  * [place.py](/models/place.py) - class Place
+  * [review.py](/models/review.py) - class Review
+  * [amenity.py](/models/amenity.py) - class Amenity
+  * [`__init__.py`](/models/__init__.py) - initialization code for Python package models
+  * [tests](/tests/) - unit test files
+  * [engine](models/engine) - contains storage engines
+    * [file_storage.py](/models/engine/file_storage.py) - class FileStorage
+      * `all` - returns the dictionary __objects
+      * `new` - sets in __objects the obj with key <obj class name>.id
+      * `save` - serializes __objects to the JSON file (path: __file_path)
+      * `reload` - deserializes the JSON file to __objects
+* [tests](tests) - contains tests for all models and storage engines mentioned above
  * [web_static](web_static) - contains HTML, CSS, and images files
    * [0-index.html](web_static/0-index.html) - a basic HTML page that contains a header and footer like below:
    ![0-index.html](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/268/0-index.png)
@@ -142,6 +145,7 @@ The purpose of Phase 1 is to:
       * [8-places.css](web_static/styles/8-places.css) - places style
       * [101-places.css](web_static/styles/101-places.css) - places style
       * [102-places.css](web_static/styles/102-places.css) - places style
+
 
 ## Execution
 
