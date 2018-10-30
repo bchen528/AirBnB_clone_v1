@@ -16,7 +16,7 @@
 
 ## Description
 
-**hbnb** is a full-stack clone of the web application [AirBnB](https://www.airbnb.com/). This clone was built in five iterative phases. This version includes completion of Phase 1, which include two parts: building 1) a command interpreter that parses and evaluates input from the commandline appropriately and 2) a landing page. Test suite included. 
+**hbnb** is a full-stack clone of the web application [AirBnB](https://www.airbnb.com/). This clone was built in four iterative phases. This version includes completion of Phase 1, which include two parts: building 1) a command interpreter that parses and evaluates input from the commandline appropriately and 2) a landing page. Test suite included. 
 
 ### Part 1: Build a command-line interpreter that handles AirBnB objects
 ![console](https://i.imgur.com/RU67f06.png)
@@ -27,7 +27,7 @@
 **Links to other versions:**
 * [AirBnB_clone_v2: MySQL, Deploy static, Webframework](https://github.com/bchen528/AirBnB_clone_v2)
 * [AirBnB_clone_v3: RESTful API](https://github.com/bchen528/AirBnB_clone_v3)
-* [AirBnB_clone_v4: Web dynamic](https://github.com/bchen528/AirBnB_clone_v4)
+* [AirBnB_clone_v4: Web dynamic](https://github.com/bchen528/AirBnB_clone_v4) (Final version!)
 
 ## Purpose
 
