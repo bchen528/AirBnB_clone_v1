@@ -26,9 +26,13 @@
 
 **Links to other versions:**
 [Phase 2: MySQL](https://github.com/bchen528/AirBnB_clone_v2)
+
 [Phase 3: Deploy static](https://github.com/bchen528/AirBnB_clone_v2)
+
 [Phase 4: Web framework](https://github.com/bchen528/AirBnB_clone_v2)
+
 [Phase 5: RESTful API](https://github.com/bchen528/AirBnB_clone_v3)
+
 [Phase 6: Web dynamic](https://github.com/bchen528/AirBnB_clone_v4)
 
 ## Purpose
