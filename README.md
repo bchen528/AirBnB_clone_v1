@@ -18,7 +18,7 @@
 
 **hbnb** is a full clone of the web application AirBnB. This clone will be constructed in five phases. Currently, we have completed the first phase - to build a simple command interpreter that parses and evaluates input from the commandline appropriately. Test suite included. Future steps to come.
 
-![console](https://holbertonintranet.s3.amazonaws.com/uploads/medias/2018/6/815046647d23428a14ca.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAJIMMWEC6CH2PXSCQ%2F20181030%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20181030T003425Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=5f7986a5dceaa4d6dd042ad96dbde9716b4453cb5042d9b8fcc85cbf1846161d)
+![console](https://i.imgur.com/RU67f06.png)
 
 ## Purpose
 
