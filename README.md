@@ -31,7 +31,7 @@
 
 ## Purpose
 
-The purpose of the AirBnb project is to:
+The purpose of Phase 1 is to:
 * create a parent class BaseModel that will take care of initialization, serialization, and deserialization of future instances
 * create a simple flow of serialization/deserialization: instance <-> dictionary <-> JSON string <-> file
 * create all classes used for AirBnb that inherit from BaseModel
